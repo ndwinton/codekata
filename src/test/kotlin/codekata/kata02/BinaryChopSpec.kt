@@ -44,4 +44,10 @@ class BinaryChopSpec : FunSpec({
             binaryChopRecursiveNoCopy(target, list).shouldBe(expected)
         }
     }
+
+    context("All tests for version 3 - procedural") {
+        withData(testData) { (expected, target, list) ->
+            binaryChopProcedural(target, list).shouldBe(expected)
+        }
+    }
 })
