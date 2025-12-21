@@ -33,9 +33,15 @@ val testData = listOf(
 class BinaryChopSpec : FunSpec({
 
 
-    context("all tests for version 1") {
+    context("All tests for version 1 - recursive") {
         withData(testData) { (expected, target, list) ->
             binaryChopRecursive(target, list).shouldBe(expected)
+        }
+    }
+
+    context("All tests for version 2 - recursive without copy") {
+        withData(testData) { (expected, target, list) ->
+            binaryChopRecursiveNoCopy(target, list).shouldBe(expected)
         }
     }
 })

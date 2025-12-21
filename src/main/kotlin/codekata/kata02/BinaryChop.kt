@@ -16,3 +16,19 @@ fun binaryChopRecursive(target: Int, list: List<Int>): Int {
         }
     return inner(0, list)
 }
+
+fun binaryChopRecursiveNoCopy(target: Int, list: List<Int>): Int {
+
+    tailrec fun inner(start: Int, end: Int): Int =
+        when {
+            list.isEmpty() -> -1
+            list[start] == target -> start
+            start == end -> -1
+            else -> {
+                val mid = (start + end) / 2
+                if (target < list[mid + 1]) inner(start, mid)
+                else inner(mid + 1, end)
+            }
+        }
+    return inner(0, list.size - 1)
+}
