@@ -1,0 +1,13 @@
+[versions]
+kotest = "6.0.7"
+
+[libraries]
+kotest-framework = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
+kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+
+[bundles]
+kotest = ["kotest-framework", "kotest-assertions", "kotest-property"]
+
+[plugins]
+kotest = { id = "io.kotest", version.ref = "kotest" }

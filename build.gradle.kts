@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.2.21"
+    alias(libs.plugins.kotest)
 }
 
 group = "org.example"
@@ -10,13 +11,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    testImplementation(libs.bundles.kotest)
 }
 
 kotlin {
     jvmToolchain(17)
-}
-
-tasks.test {
-    useJUnitPlatform()
 }
