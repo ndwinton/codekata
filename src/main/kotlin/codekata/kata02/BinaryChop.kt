@@ -44,3 +44,34 @@ fun binaryChopProcedural(target : Int, list: List<Int>): Int {
 
     return if (list[start] == target) start else -1
 }
+
+private enum class States {
+    PRE_CHECK, FOUND, NOT_FOUND, CHECK_FOUND, CHECK_END, SPLIT, FINISH
+}
+
+fun binaryChopStateMachine(target: Int, list: List<Int>): Int {
+    var state = States.PRE_CHECK
+    var start = 0
+    var end = list.size - 1
+
+    while (state != States.FINISH) {
+        when (state) {
+            States.PRE_CHECK -> state = if (list.isEmpty()) States.NOT_FOUND else States.CHECK_FOUND
+            States.NOT_FOUND -> {
+                start = -1
+                state = States.FINISH
+            }
+            States.CHECK_FOUND -> state = if (list[start] == target) States.FOUND else States.CHECK_END
+            States.CHECK_END -> state = if (start == end) States.NOT_FOUND else States.SPLIT
+            States.FOUND -> state = States.FINISH
+            States.SPLIT -> {
+                val mid = (start + end) / 2
+                if (target < list[mid + 1]) end = mid else start = mid + 1
+                state = States.CHECK_FOUND
+            }
+            else -> state = States.FINISH
+        }
+    }
+
+    return start
+}

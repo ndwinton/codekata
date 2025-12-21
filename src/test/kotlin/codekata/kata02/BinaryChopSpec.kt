@@ -50,4 +50,10 @@ class BinaryChopSpec : FunSpec({
             binaryChopProcedural(target, list).shouldBe(expected)
         }
     }
+
+    context("All tests for version 4 - state machine") {
+        withData(testData) { (expected, target, list) ->
+            binaryChopStateMachine(target, list).shouldBe(expected)
+        }
+    }
 })
