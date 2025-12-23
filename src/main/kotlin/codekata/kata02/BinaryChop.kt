@@ -75,3 +75,5 @@ fun binaryChopStateMachine(target: Int, list: List<Int>): Int {
 
     return start
 }
+
+fun binaryChopCheating(target: Int, list: List<Int>): Int = list.binarySearch(target).let { if (it < 0) -1 else it }

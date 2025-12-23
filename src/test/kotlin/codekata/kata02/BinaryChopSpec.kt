@@ -56,4 +56,10 @@ class BinaryChopSpec : FunSpec({
             binaryChopStateMachine(target, list).shouldBe(expected)
         }
     }
+
+    context("All tests for version 5 - cheating!") {
+        withData(testData) { (expected, target, list) ->
+            binaryChopCheating(target, list).shouldBe(expected)
+        }
+    }
 })
